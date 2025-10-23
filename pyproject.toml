@@ -25,6 +25,13 @@ branch = "main"
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[dependency-groups]
+dev = [
+    "pyright>=1.1.406",
+    "pytest>=8.4.2",
+    "ruff>=0.14.1",
+]
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/amplifier_module_markdown_utils"]
 
