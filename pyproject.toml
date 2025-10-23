@@ -6,20 +6,13 @@ authors = [
     {name = "Brian Krabach", email = "briankrabach@example.com"}
 ]
 requires-python = ">=3.11"
-dependencies = [
-    "amplifier-core",
-]
+dependencies = []
 
 [project.optional-dependencies]
 dev = [
     "pytest>=7.0.0",
     "pyright>=1.1.0",
 ]
-
-[tool.uv.sources.amplifier-core]
-git = "https://github.com/microsoft/amplifier-dev"
-subdirectory = "amplifier-core"
-branch = "main"
 
 [build-system]
 requires = ["hatchling"]
