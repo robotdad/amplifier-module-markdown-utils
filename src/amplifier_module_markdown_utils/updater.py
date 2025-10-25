@@ -9,7 +9,7 @@ class MarkdownImageUpdater:
     def insert_image(
         self,
         content: str,
-        line_number: int,
+        line_number: int | None,
         image_path: str,
         alt_text: str = "",
         width: str | None = "50%",
@@ -97,25 +97,29 @@ class MarkdownImageUpdater:
             return f'\n<img src="{image_path}" alt="{alt_text}" width="{width}">\n'
         return f"\n![{alt_text}]({image_path})\n"
 
-    def _find_insertion_line(self, lines: list[str], target: int, placement: str) -> int:
+    def _find_insertion_line(self, lines: list[str], target: int | None, placement: str) -> int:
         """Find the best line to insert content.
 
         Args:
             lines: Content lines
-            target: Target line number
+            target: Target line number (None = auto-determine)
             placement: Insertion strategy
 
         Returns:
             Line index for insertion
         """
+        # If no target specified, use middle of document
+        if target is None:
+            target = len(lines) // 2
+
         if placement == "before_section":
             for i in range(max(0, target - 5), min(len(lines), target + 5)):
-                if lines[i].startswith("##"):
+                if i < len(lines) and lines[i].startswith("##"):
                     return i
 
         elif placement == "after_intro":
             for i in range(target, min(len(lines), target + 20)):
-                if not lines[i].strip() and i > target:
+                if i < len(lines) and not lines[i].strip() and i > target:
                     return i + 1
 
         return min(target, len(lines))
