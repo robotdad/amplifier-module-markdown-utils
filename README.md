@@ -1,5 +1,15 @@
 # amplifier-module-markdown-utils
 
+> **⚠️ DEPRECATED:** This standalone module is deprecated in favor of the integrated version in [amplifier-bundle-blog-creator](https://github.com/robotdad/amplifier-bundle-blog-creator).
+>
+> **New location:** The library is available in the bundle at `modules/markdown-utils/`
+>
+> **For new projects:** Use the bundle instead - it includes this functionality as an integrated utility library.
+>
+> This repository remains for reference and backward compatibility only.
+
+---
+
 **Markdown parsing, injection, and metadata extraction for Amplifier applications**
 
 Process markdown documents with utilities for structure analysis, content injection, and metadata extraction.
